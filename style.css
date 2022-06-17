@@ -15,7 +15,7 @@ h2{
     color: white;
 }
 
-#film-grid{
+#movies-grid{
     display: grid;
     z-index: 0;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -27,7 +27,7 @@ h2{
     transition: 0.5s;
 }
 
-.movieDisplay{
+.movie-poster{
     width: 70%;
     height: 80%;
     margin-left: 10%;
@@ -40,13 +40,13 @@ h2{
    transform: translateY(-25px);
 }
 
-.movieTitle{
+.movie-title{
     color: white;
     text-align: center;
     font-size: medium;
 }
 
-.movieRating{
+.movie-votes{
     color: white;
     text-align: center;
     font-size: small;
@@ -90,12 +90,12 @@ h2{
     height: 500px;
 }
 
-#modalImage{
+#movie-card{
     display:block;
     width: 400px;
 }
 
-#modalImage:hover{
+#movie-card:hover{
     cursor: pointer;
     opacity: 0.7;
 }
@@ -148,7 +148,7 @@ h2{
     cursor: pointer;
 }
 
-#load{
+#load-more-movies-btn{
     color: white;
     background-color: black;
     width: 20%;
@@ -157,7 +157,7 @@ h2{
     margin-bottom: 2%;
 }
 
-#searchText{
+#search-input{
     color: white;
     position: relative;
     left: -30%;
@@ -171,12 +171,12 @@ h2{
     font-size: medium;
 }
 
-#mainPage{
+#close-search-btn{
     cursor: pointer;
 }
 
 @media screen and (max-width: 850px) {
-    #film-grid{
+    #movies-grid{
         grid-template-columns: 1fr 1fr 1fr;
     }
 
@@ -191,7 +191,7 @@ h2{
 }
 
 @media screen and (max-width: 600px) {
-    #film-grid{
+    #movies-grid{
         grid-template-columns: 1fr 1fr;
     }
 
@@ -206,7 +206,7 @@ h2{
 }
 
 @media screen and (max-width: 300px) {
-    #film-grid{
+    #movies-grid{
         grid-template-columns: 1fr 1fr;
     }
 

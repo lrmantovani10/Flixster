@@ -52,7 +52,7 @@ const getMovieTrailer = async(movieId) =>{
 
 function showModal(movieContent){
   const modalDisplay = document.getElementById("modalContent")
-  const modalImage = document.getElementById("modalImage")
+  const movieCard = document.getElementById("movie-card")
   const subTitle = document.getElementById("subTitle")
   const extraInfo = document.getElementById("extraInfo")
   const summary = document.getElementById("summary")
@@ -60,9 +60,9 @@ function showModal(movieContent){
   const movieTrailer = document.getElementById("movieTrailer")
   document.body.style.overflow = "hidden"
   modalDisplay.style.display = "grid"
-  modalImage.src = basePath + movieContent.backdrop_path
-  modalImage.alt = movieContent.title + " preview image"
-  modalImage.addEventListener("click", toggleImage)
+  movieCard.src = basePath + movieContent.backdrop_path
+  movieCard.alt = movieContent.title + " preview image"
+  movieCard.addEventListener("click", toggleImage)
   subTitle.innerHTML = movieContent.title
   summary.innerHTML = movieContent.overview
   exitButton.addEventListener("click", turnOffDisplay)
@@ -86,19 +86,19 @@ function showModal(movieContent){
 }
 
 function toggleImage(){
-  const modalImage = document.getElementById("modalImage")
+  const movieCard = document.getElementById("movie-card")
   const movieTrailer = document.getElementById("movieTrailer")
   
-  if(modalImage.style.display != "none"){
-    modalImage.style.animation = "fadeOut 0.6s"
+  if(movieCard.style.display != "none"){
+    movieCard.style.animation = "fadeOut 0.6s"
     setTimeout(() => {
-      modalImage.style.display = "none"
+      movieCard.style.display = "none"
       movieTrailer.style.display = "block"
     },600)
   }
   else{
-    modalImage.style.animation = ""
-    modalImage.style.display = "block"
+    movieCard.style.animation = ""
+    movieCard.style.display = "block"
     movieTrailer.style.display = "none"
   }
 }
@@ -113,18 +113,18 @@ const fetchMovies = async() =>{
       response = await fetch('https://api.themoviedb.org/3/movie/now_playing?api_key='+apiKey+'8&language=en-US&page='+pageNumber);
     }
     const loadData = await response.json()
-    const myGrid = document.getElementById("film-grid")
+    const myGrid = document.getElementById("movies-grid")
     if(pageNumber == 1)
       myGrid.innerHTML = ``
     for (let i = 0; i < loadData.results.length; i++){
       myGrid.innerHTML += `
       <div class = "newMovie">
-        <h2 class = "movieTitle"> ${loadData.results[i].title} </h2>
-        <img src = "${basePath + loadData.results[i].poster_path}" class = "movieDisplay" alt = "${loadData.results[i].title} poster that opens popup when clicked">
-        <h3 class = "movieRating">${loadData.results[i].vote_average}</h3>
+        <h2 class = "movie-title"> ${loadData.results[i].title} </h2>
+        <img src = "${basePath + loadData.results[i].poster_path}" class = "movie-poster" alt = "${loadData.results[i].title} poster that opens popup when clicked">
+        <h3 class = "movie-votes">${loadData.results[i].vote_average}</h3>
       </div>`
     }
-    const movies = document.querySelectorAll(".movieDisplay")
+    const movies = document.querySelectorAll(".movie-poster")
     accumulatedResults = accumulatedResults.concat(loadData.results)
     for (let i = 0; i < accumulatedResults.length; i++){
       movies[i].addEventListener("click", () => showModal(accumulatedResults[i]))
@@ -138,7 +138,7 @@ const fetchMovies = async() =>{
 
 window.onload = function () {
   fetchMovies()  
-  const loadButton = document.getElementById("load")
+  const loadButton = document.getElementById("load-more-movies-btn")
   loadButton.addEventListener("click", loadMore)
 }
 
