@@ -175,7 +175,7 @@ h2{
     cursor: pointer;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 850px) {
     #film-grid{
         grid-template-columns: 1fr 1fr 1fr;
     }
@@ -185,17 +185,23 @@ h2{
     }
 
     .newMovie{
+        margin-top: 10%;
         margin-bottom: 10%;
     }
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 600px) {
     #film-grid{
         grid-template-columns: 1fr 1fr;
     }
 
     #movieTrailer{
         width: 400px;
+    }
+
+    .newMovie{
+        margin-top: 10%;
+        margin-bottom: 10%;
     }
 }
 
@@ -206,5 +212,10 @@ h2{
 
     #movieTrailer{
         width: 200px;
+    }
+
+    .newMovie{
+        margin-bottom: 10%;
+        margin-top: 10%;
     }
 }
